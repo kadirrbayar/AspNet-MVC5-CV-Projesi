@@ -1,0 +1,32 @@
+﻿@model MvcProject.Models.Entity.Tools
+@{
+    ViewBag.Title = "EditTools";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Araç Düzenle</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        @Html.HiddenFor(x => x.Id)
+                        @Html.Label("Araç İkonu")
+                        @Html.TextBoxFor(x => x.Photo, new { @class = "form-control" })
+                        <br />
+                        <button class="btn btn-outline-success btn-sm">Güncelle</button>
+                        <a href="/Tools/Index" class="btn btn-outline-danger btn-sm">İptal</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

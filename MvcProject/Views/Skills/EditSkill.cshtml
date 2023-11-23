@@ -1,0 +1,37 @@
+﻿@model MvcProject.Models.Entity.Skills
+
+@{
+    ViewBag.Title = "EditSkill";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Yetenek Düzenleme</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        @Html.HiddenFor(x => x.Id)
+                        @Html.Label("Başlık")
+                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                        <br />
+                        @Html.Label("Yetenek Seviyesi")
+                        @Html.TextBoxFor(x => x.Level, new { @class = "form-control" })
+                        <br />
+                        <button class="btn btn-outline-primary">Güncelle</button>
+                        <a href="/Skills/Index" class="btn btn-outline-secondary">İptal</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

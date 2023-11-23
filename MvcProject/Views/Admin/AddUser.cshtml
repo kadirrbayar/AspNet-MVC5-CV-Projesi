@@ -1,0 +1,35 @@
+﻿@model MvcProject.Models.Entity.Admins
+
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-gray-dark">
+                <div class="card-header">
+                    <h3 class="card-title">Kullanıcı Ekleme Paneli</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        @Html.Label("Kullanıcı Adı")
+                        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                        <br />
+                        @Html.Label("Şifre")
+                        @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type = "password" })
+                        <br />
+                        <button class="btn btn-outline-info btn-sm">Ekle</button>
+                        <a href="/Admin/Index" class="btn btn-outline-danger btn-sm">İptal</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

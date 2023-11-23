@@ -1,0 +1,41 @@
+﻿@model MvcProject.Models.Entity.Experience
+@{
+    ViewBag.Title = "AddExperience";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Deneyim Ekleme</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        @Html.Label("Başlık")
+                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                        <br />
+                        @Html.Label("Alt Başlık")
+                        @Html.TextBoxFor(x => x.Subtitle, new { @class = "form-control" })
+                        <br />
+                        @Html.Label("Tarih")
+                        @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+                        <br />
+                        @Html.Label("Açıklama")
+                        @Html.TextAreaFor(x => x.Content, 8, 3, new { @class = "form-control" })
+                        <br />
+                        <button class="btn btn-primary">Kaydet</button>
+                        <a href="/Experience/Index" class="btn btn-secondary">İptal</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

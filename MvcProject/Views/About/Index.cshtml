@@ -1,0 +1,52 @@
+﻿@model MvcProject.Models.Entity.About
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">Hakkımda</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        @Html.HiddenFor(x => x.Id)
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Adınız" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.SurName, new { @class = "form-control", @placeholder = "Soyadınız" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.Subtitle, new { @class = "form-control", @placeholder = "Alt Başlık" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.Mail, new { @class = "form-control", @placeholder = "Mail" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.Image, new { @class = "form-control", @placeholder = "Resim Yolu" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextAreaFor(x => x.Content, 8,3, new { @class = "form-control", @placeholder = "Hakkımda" })
+                        </div>
+                        <div class="card-footer">
+                            <div class="float-right">
+                                <button type="submit" onclick="myFunction()" class="btn btn-primary"><i class="far fa-paper-plane"></i> Güncelle</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function myFunction() {
+  alert("Başarıyla Güncellendi.");
+}
+</script>

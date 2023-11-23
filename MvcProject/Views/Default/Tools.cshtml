@@ -1,0 +1,9 @@
+﻿@using MvcProject.Models.Entity
+@model List<Tools>
+
+<ul class="list-inline dev-icons">
+    @foreach(var item in Model)
+    {
+        <li class="list-inline-item"><i class="@item.Photo"></i></li>
+    }
+</ul>

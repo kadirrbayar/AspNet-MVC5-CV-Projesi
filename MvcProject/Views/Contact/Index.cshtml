@@ -1,0 +1,75 @@
+﻿@using MvcProject.Models.Entity
+@model List<Contact>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">Gelen Kutusu</h3>
+                </div>
+                <div class="card-body p-0">
+                    <div class="mailbox-controls">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-sm" id="deleteButton"><i class="far fa-trash-alt"></i></button>
+                        </div>
+                        <a href="/Contact/Index/" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></a>
+                    </div>
+                    <div class="table-responsive mailbox-messages">
+                        <table class="table table-hover table-striped">
+                            <tbody>
+                                @foreach (var x in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="icheck-primary">
+                                                <input type="checkbox" value="@x.Id" id="@x.Id">
+                                                <label for="@x.Id"></label>
+                                            </div>
+                                        </td>
+                                        <td class="mailbox-name"><a href="/Contact/ContactDetails/@x.Id">@x.Name</a></td>
+                                        <td class="mailbox-subject">
+                                            <b>@x.Subject</b> - @x.Message.Substring(0, Math.Min(x.Message.Length, 30))...
+                                        </td>
+                                        <td class="mailbox-attachment"></td>
+                                        <td class="mailbox-date">@DateTime.Parse(@x.Date.ToString()).ToString("dd/MMM/yyyy")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script>
+    $("#deleteButton").on("click", function () {
+        var selectedIds = $("input[type='checkbox']:checked").map(function () {
+            return $(this).val();
+        }).get();
+
+        // AJAX isteği gönder
+        if (confirm("Bu mesajı silmek istediğinizden emin misiniz?")) {
+            $.ajax({
+                type: "post",
+                url: "/Contact/DeleteContact/",
+                data: { itemIds: selectedIds },
+                success: function (response) {
+                    if (response.success) {
+                        $("input[type='checkbox']:checked").closest("tr").remove();
+                    } else {
+                        console.error('Silme hatası:', response.error);
+                    }
+                }
+            });
+        }
+    });
+</script>

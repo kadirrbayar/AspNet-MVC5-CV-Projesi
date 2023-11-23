@@ -1,0 +1,58 @@
+﻿@using MvcProject.Models.Entity
+@model List<Admins>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Tüm Kullanıcılar</h3>
+            <div class="card-tools">
+                <a class="btn btn-outline-primary btn-sm" href="/Admin/AddUser/">
+                    <i class="fas fa-save">
+                    </i>
+                    Yeni Kullanıcı Ekle
+                </a>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped projects">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Kullanıcı Adı</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td>
+                                @x.Id
+                            </td>
+                            <td>
+                                @x.UserName
+                            </td>
+                            <td class="project-actions text-right">
+                                <a class="btn btn-outline-success btn-sm" href="/Admin/EditUser/@x.Id">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    Güncelle
+                                </a>
+                                <a class="btn btn-outline-danger btn-sm" href="/Admin/DeleteUser/@x.Id">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Sil
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

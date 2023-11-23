@@ -1,0 +1,59 @@
+﻿@using MvcProject.Models.Entity
+@model List<Education>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content">
+    <div class="card card-cyan">
+        <div class="card-header">
+            <h3 class="card-title">Eğitim Hayatım</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                @foreach (var x in Model)
+                {
+                    <div class="col-md-12">
+                        <div class="card bg-light">
+                            <div class="card-body pt-2">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h2 class="lead"><b>@x.Title</b></h2>
+                                        <p class="text-muted text-sm">@x.Subtitle</p>
+                                        <ul class="ml-0 mb-0 fa-ul text-muted">
+                                            <li class="small">@x.Content</li>
+                                            <li class="small">@x.Gpa</li>
+                                            <li class="small">@DateTime.Parse(@x.Date.ToString()).ToString("dd/MMM/yyyy")</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-right">
+                                    <a href="/Education/DeleteEducation/@x.Id" class="btn btn-sm btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                    <a href="/Education/EditEducation/@x.Id" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-pen"></i> Güncelle
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="float-right">
+                <a href="/Education/AddEducation/" class="btn btn-outline-primary"><i class="far fa-bookmark"></i> Yeni Eğitim Ekle</a>
+            </div>
+        </div>
+    </div>
+    </section>

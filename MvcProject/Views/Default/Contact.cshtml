@@ -1,0 +1,60 @@
+﻿<section class="resume-section" id="contact">
+    <div class="col-md-12">
+        <div class="card card-primary card-outline">
+            <div class="card-header">
+                <h3 class="card-title">Bana Ulaşın</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <input class="form-control" placeholder="Adınız" id="Name" name="Name">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Mail" id="Mail" name="Mail">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Konu" id="Subject" name="Subject">
+                </div>
+                <div class="form-group">
+                    <textarea id="compose-textarea" class="form-control" style="height: 300px" name="Message" placeholder="Mesajınız"></textarea>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="float-right">
+                    <button type="button" class="btn btn-primary" id="addmessage"><i class="far fa-envelope"></i> Gönder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script>
+    $("#addmessage").click(function () {
+        let name = $("#Name").val();
+        let mail = $("#Mail").val();
+        let konu = $("#Subject").val();
+        let message = $("#compose-textarea").val();
+        if (!name || !mail || !message || !konu) {
+            alert("Tüm alanları doldurmalısınız!");
+        } else {
+            let values = {
+                Name: name,
+                Mail: mail,
+                Message: message,
+                Subject: konu
+            };
+            $.ajax({
+                type: "post",
+                url: "/Default/AddContact/",
+                data: values,
+                success: function (r) {
+                    let result = JSON.parse(r);
+                    alert("Mesajınız başarıyla gönderildi. Bana ulaştığınız için teşekkür ederim. Size en kısa süre içinde geri dönüş yapacağım.");
+                    $("#Name").val("");
+                    $("#Mail").val("");
+                    $("#Subject").val("");
+                    $("#compose-textarea").val("");
+                }
+            });
+        }
+    });
+</script>

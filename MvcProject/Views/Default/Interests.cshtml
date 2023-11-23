@@ -1,0 +1,13 @@
+﻿@using MvcProject.Models.Entity
+@model List<Interests>
+
+<section class="resume-section" id="interests">
+    <div class="resume-section-content">
+        <h2 class="mb-5">Hobilerim</h2>
+        @foreach (var x in Model)
+        {
+            <p>@x.Content1</p>
+            <p class="mb-0">@x.Content2</p>
+        }
+    </div>
+</section>

@@ -1,0 +1,55 @@
+﻿@using MvcProject.Models.Entity
+@model List<Certifications>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content">
+    <div class="card">
+        <div class="card-header border-0">
+            <h3 class="card-title">Sertifikalarım</h3>
+            <div class="card-tools">
+                <a href="/Certifications/AddCertifications" class="btn btn-tool btn-sm">
+                    <i class="fas fa-file-upload"></i> Yeni Sertifika Ekle
+                </a>
+            </div>
+        </div>
+        <div class="card-body table-responsive p-0">
+            <table class="table table-striped table-valign-middle">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Sertifika</th>
+                        <th>Tarih</th>
+                        <th>Detay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var x in Model)
+                    {
+                    <tr>
+                        <td>
+                             @x.Id
+                        </td>
+                        <td>@x.Title</td>
+                        <td>
+                            @DateTime.Parse(@x.Date.ToString()).ToString("dd/MMM/yyyy")
+                        </td>
+                        <td>
+                            <a href="/Certifications/EditCertifications/@x.Id" class="btn btn-sm">
+                                <i class="fas fa-edit"></i> Düzenle
+                            </a>
+                            
+                            <a href="/Certifications/DeleteCertifications/@x.Id" class="btn btn-sm">
+                                <i class="fas fa-trash"></i> Sil
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
