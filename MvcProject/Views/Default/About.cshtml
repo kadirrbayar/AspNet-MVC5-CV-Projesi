@@ -7,11 +7,11 @@
         <div class="resume-section-content">
             <h1 class="mb-0">
                 @x.Name
-                <span class="text-primary">@x.SurName</span>
+                <span class="text-info">@x.SurName</span>
             </h1>
             <div class="subheading mb-5">
                 @x.Subtitle ·
-                <a href="mailto:@x.Mail">@x.Mail</a>
+                <a class="text-info" href="mailto:@x.Mail">@x.Mail</a>
             </div>
             <p class="lead mb-5">@x.Content</p>
             @Html.Action("SocialMedia")
