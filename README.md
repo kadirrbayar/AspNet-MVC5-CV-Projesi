@@ -21,8 +21,13 @@ Entity Framework Core DbFirst yaklaşımı ile veritabanı oluşturulmuştur.
 
 ### <a name="images">Görseller</a>
 
-<p align="left">
-  <img src="">
+<p align="center">
+  <img src="https://telegra.ph/file/7d245df0a7b2e7d527e7e.png">
+  <img src="https://telegra.ph/file/859d9e66b1c5e51889fe9.png">
+  <img src="https://telegra.ph/file/1aace38949157453b1d54.png">
+  <img src="https://telegra.ph/file/107fe6cdcb118111e0fe9.png">
+  <img src="https://telegra.ph/file/a7ae321d69b9df9009048.png">
+  <img src="https://telegra.ph/file/a3f74a94d35c95647f64a.png">
 </p>
 
 ## <a name="license">Lisans</a>
